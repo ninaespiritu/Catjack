@@ -1,4 +1,4 @@
-// CREATING FULL DECK
+// FUNCTION: CREATE FULL DECK
 
 let deck = [];
 const suits = ["Heart", "Diamond", "Spade", "Club"];
@@ -34,4 +34,23 @@ const newDeck = () => {
 	}
 };
 
-newDeck(); // console.log(deck, deck.length);
+newDeck();
+
+// FUNCTION: GET 1 CARD
+
+const getCard = () => {
+	const index = Math.floor(Math.random() * deck.length);
+	const card = deck[index];
+	deck.splice(index, 1);
+	return card;
+};
+
+userCards = [];
+computerCards = [];
+
+// LOOP: DRAW 2 CARDS FOR PLAYERS
+
+for (i = 0; i < 2; i++) {
+	userCards.push(getCard());
+	computerCards.push(getCard());
+}
