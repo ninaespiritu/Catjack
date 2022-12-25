@@ -44,17 +44,19 @@ export const Blackjack = () => {
 		} else if (playerScore === 21 && playerCards.length === 2) {
 			setResult("You have Blackjack! You win!");
 			setTurnOver(true);
-		} else if (dealerScore === 21 && playerScore < 21) {
-			setResult("You lose.");
-			setTurnOver(true);
-		} else if (playerScore === 21 && dealerScore < 21) {
+		}
+		// else if (dealerScore === 21 && playerScore < 21) {
+		// 	setResult("Dealer has the higher score. You lose.");
+		// 	setTurnOver(true);
+		// }
+		else if (playerScore === 21 && dealerScore < 21) {
 			setResult("You win!");
 			setTurnOver(true);
 		} else if (playerScore > 21) {
 			setResult("You went over 21. You lose.");
 			setTurnOver(true);
 		}
-	}, [playerScore, dealerScore]);
+	}, [playerScore, dealerScore, playerCards.length, dealerCards.length]);
 
 	if (turnOver && result === "") {
 		setTimeout(() => {
@@ -69,7 +71,9 @@ export const Blackjack = () => {
 		) {
 			dealerHit() ? dealerHit() : setResult("It's a tie!");
 		} else if (dealerScore < playerScore) {
-			dealerHit() ? dealerHit() : setResult("You have the higher score. You win!");
+			dealerHit()
+				? dealerHit()
+				: setResult("You have the higher score. You win!");
 		} else if (playerScore < dealerScore && dealerScore > 21) {
 			setResult("Dealer went over 21. You win!");
 		} else if (playerScore < dealerScore) {
