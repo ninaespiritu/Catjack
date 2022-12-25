@@ -67,9 +67,9 @@ export const Blackjack = () => {
 			(playerScore === 21 && dealerScore === 21) ||
 			playerScore === dealerScore
 		) {
-			dealerHit() ? "" : setResult("It's a tie!");
+			dealerHit() ? dealerHit() : setResult("It's a tie!");
 		} else if (dealerScore < playerScore) {
-			dealerHit() ? "" : setResult("You have the higher score. You win!");
+			dealerHit() ? dealerHit() : setResult("You have the higher score. You win!");
 		} else if (playerScore < dealerScore && dealerScore > 21) {
 			setResult("Dealer went over 21. You win!");
 		} else if (playerScore < dealerScore) {
