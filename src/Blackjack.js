@@ -8,6 +8,7 @@ import {
 	computerScore,
 	getPoints,
 } from "./utils/Functions";
+import { calculateScore } from "./utils/CalculateScore";
 
 export const Blackjack = () => {
 	const [turnOver, setTurnOver] = useState(false);
@@ -23,16 +24,16 @@ export const Blackjack = () => {
 	// console.log(playerCards);
 	// console.log(dealerCards);
 
-	// FUNCTION: Calculate score
-	const calculateScore = (cards, score) => {
-		if (score === 21 && cards.length === 2) {
-			return 21;
-		} else if (cards[-1] === "A" && score > 21) {
-			return score - 10;
-		} else {
-			return score;
-		}
-	};
+	// // FUNCTION: Calculate score
+	// const calculateScore = (cards, score) => {
+	// 	if (score === 21 && cards.length === 2) {
+	// 		return 21;
+	// 	} else if (cards[-1] === "A" && score > 21) {
+	// 		return score - 10;
+	// 	} else {
+	// 		return score;
+	// 	}
+	// };
 
 	useEffect(() => {
 		// if (playerScore === 21 || dealerScore === 21 || playerScore > 21) {
@@ -82,7 +83,7 @@ export const Blackjack = () => {
 	};
 
 	const dealerHit = () => {
-		if (dealerScore < 17) {
+		if (dealerScore < 17 || dealerScore < playerScore) {
 			buttonHit(dealerCards, setDealerCards, dealerScore, setDealerScore);
 			return true;
 		} else {
