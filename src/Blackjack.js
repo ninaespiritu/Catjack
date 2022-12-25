@@ -1,26 +1,31 @@
 import { useEffect, useState } from "react";
 import { Card } from "./components/Card";
 import { fullDeck } from "./utils/Deck";
-import { getCard, userCards, computerCards } from "./utils/Functions";
+import {
+	getCard,
+	userCards,
+	computerCards,
+	userScore,
+	computerScore,
+} from "./utils/Functions";
 
 export const Blackjack = () => {
-	// const [deck, setDeck] = useState(fullDeck);
-	// console.log(deck);
-
-	const [playerScore, setPlayerScore] = useState(0);
-	const [dealerScore, setDealerScore] = useState(0);
+	const [playerScore, setPlayerScore] = useState(userScore);
+	const [dealerScore, setDealerScore] = useState(computerScore);
 
 	const [playerCards, setPlayerCards] = useState(userCards);
 	const [dealerCards, setDealerCards] = useState(computerCards);
 
-	console.log(playerCards);
-	console.log(dealerCards);
+	// console.log(playerCards);
+	// console.log(dealerCards);
 
 	// FUNCTION: Player clicks "Hit" to draw new card
 	const buttonHit = () => {
 		const newCard = getCard();
 		const newCards = [...playerCards, newCard];
+		const newScore = playerScore + newCard.points;
 		setPlayerCards(newCards);
+		setPlayerScore(newScore);
 	};
 
 	// ===============================================

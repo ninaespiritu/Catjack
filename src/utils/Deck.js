@@ -21,17 +21,17 @@ const values = [
 const newDeck = (x, y) => {
 	for (x = 0; x < values.length; x++) {
 		for (y = 0; y < suits.length; y++) {
-			let weight = parseInt(values[x]);
+			let points = parseInt(values[x]);
 			if (values[x] === "J" || values[x] === "Q" || values[x] === "K") {
-				weight = 10;
+				points = 10;
 			}
 			if (values[x] === "A") {
-				weight = 1;
+				points = 1;
 			}
 			const card = {
 				suit: suits[y],
 				value: values[x],
-				weight: weight,
+				points: points,
 			};
 			fullDeck.push(card);
 		}
