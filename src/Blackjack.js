@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Card } from "./components/Card";
-import { fullDeck } from "./utils/Deck";
 import {
 	getCard,
 	userCards,
 	computerCards,
 	userScore,
 	computerScore,
+	getPoints,
 } from "./utils/Functions";
 
 export const Blackjack = () => {
@@ -23,7 +23,7 @@ export const Blackjack = () => {
 	const buttonHit = () => {
 		const newCard = getCard();
 		const newCards = [...playerCards, newCard];
-		const newScore = playerScore + newCard.points;
+		const newScore = playerScore + getPoints(newCard);
 		setPlayerCards(newCards);
 		setPlayerScore(newScore);
 	};
@@ -31,14 +31,14 @@ export const Blackjack = () => {
 	// ===============================================
 	return (
 		<div>
-			<h2>Dealer Cards: {dealerScore}</h2>
+			<h2>Dealer Score: {dealerScore}</h2>
 			<div style={{ display: "flex" }}>
 				{dealerCards.map((card, i) => (
 					<Card card={card} key={i} />
 				))}
 			</div>
 
-			<h2>Player Cards: {playerScore}</h2>
+			<h2>Player Score: {playerScore}</h2>
 			<div style={{ display: "flex" }}>
 				{playerCards.map((card, i) => (
 					<Card card={card} key={i} />

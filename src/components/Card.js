@@ -10,11 +10,13 @@ export const Card = ({ card }) => {
 				flexDirection: "column",
 				alignItems: "center",
 				justifyContent: "center",
-        borderRadius: "20px"
+				borderRadius: "20px",
 			}}
 		>
-			<h3>{card.value}</h3>
-			{card.suit === "Heart" ? (
+			<h3>{card}</h3>
+			{/* <h3>{card.value}</h3> */}
+
+			{/* {card.suit === "Heart" ? (
 				<p>&#9825;</p>
 			) : card.suit === "Diamond" ? (
 				<p>&#9826;</p>
@@ -22,7 +24,7 @@ export const Card = ({ card }) => {
 				<p>&#9828;</p>
 			) : (
 				<p>&#9831;</p>
-			)}
+			)} */}
 		</div>
 	);
 };

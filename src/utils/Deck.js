@@ -1,7 +1,7 @@
 // FUNCTION: CREATE FULL DECK
 
 let fullDeck = [];
-const suits = ["Heart", "Diamond", "Spade", "Club"];
+// const suits = ["Heart", "Diamond", "Spade", "Club"];
 const values = [
 	"2",
 	"3",
@@ -20,21 +20,24 @@ const values = [
 
 const newDeck = (x, y) => {
 	for (x = 0; x < values.length; x++) {
-		for (y = 0; y < suits.length; y++) {
-			let points = parseInt(values[x]);
-			if (values[x] === "J" || values[x] === "Q" || values[x] === "K") {
-				points = 10;
-			}
-			if (values[x] === "A") {
-				points = 1;
-			}
-			const card = {
-				suit: suits[y],
-				value: values[x],
-				points: points,
-			};
-			fullDeck.push(card);
+		for (y = 0; y < 4; y++) {
+			fullDeck.push(values[x]);
 		}
+		// for (y = 0; y < suits.length; y++) {
+		// 	let points = parseInt(values[x]);
+		// 	if (values[x] === "J" || values[x] === "Q" || values[x] === "K") {
+		// 		points = 10;
+		// 	}
+		// 	if (values[x] === "A") {
+		// 		points = 11;
+		// 	}
+		// 	const card = {
+		// 		suit: suits[y],
+		// 		value: values[x],
+		// 		points: points,
+		// 	};
+		// 	fullDeck.push(card);
+		// }
 	}
 };
 
