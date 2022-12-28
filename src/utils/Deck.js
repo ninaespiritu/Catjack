@@ -18,9 +18,9 @@ const values = [
 	"A",
 ];
 
-const newDeck = (x, y) => {
-	for (x = 0; x < values.length; x++) {
-		for (y = 0; y < 4; y++) {
+const newDeck = (i, x) => {
+	for (i = 0; i < 4; i++) {
+		for (x = 0; x < values.length; x++) {
 			fullDeck.push(values[x]);
 		}
 		// for (y = 0; y < suits.length; y++) {
