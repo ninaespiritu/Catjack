@@ -21,36 +21,18 @@ export const Blackjack = () => {
 	const [dealerScore, setDealerScore] = useState(computerScore);
 	const dealerTempScore = getPoints(dealerCards[0]);
 
+	const [catLives, setCatLives] = useState(9);
 	// console.log(playerCards);
 	// console.log(dealerCards);
 
-	// // FUNCTION: Calculate score
-	// const calculateScore = (cards, score) => {
-	// 	if (score === 21 && cards.length === 2) {
-	// 		return 21;
-	// 	} else if (cards[-1] === "A" && score > 21) {
-	// 		return score - 10;
-	// 	} else {
-	// 		return score;
-	// 	}
-	// };
-
 	useEffect(() => {
-		// if (playerScore === 21 || dealerScore === 21 || playerScore > 21) {
-		// 	console.log("Turn over");
-		// }
 		if (dealerScore === 21 && dealerCards.length === 2) {
 			setResult("Dealer has Blackjack. You lose.");
 			setTurnOver(true);
 		} else if (playerScore === 21 && playerCards.length === 2) {
 			setResult("You have Blackjack! You win!");
 			setTurnOver(true);
-		}
-		// else if (dealerScore === 21 && playerScore < 21) {
-		// 	setResult("Dealer has the higher score. You lose.");
-		// 	setTurnOver(true);
-		// }
-		else if (playerScore === 21 && dealerScore < 21) {
+		} else if (playerScore === 21 && dealerScore < 21) {
 			setResult("You win!");
 			setTurnOver(true);
 		} else if (playerScore > 21) {
@@ -129,6 +111,10 @@ export const Blackjack = () => {
 			)}
 
 			<p>{result}</p>
+
+			{[...Array(catLives)].map((e, i) => (
+				<span key={i}>&#9825;</span>
+			))}
 
 			<h2>Player Score: {playerScore}</h2>
 			<div style={{ display: "flex" }}>
