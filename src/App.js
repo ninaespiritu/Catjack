@@ -1,5 +1,5 @@
 import "./App.css";
-import { Blackjack } from "./Blackjack";
+import { Blackjack } from "./pages/Blackjack";
 
 const App = () => {
 	return (

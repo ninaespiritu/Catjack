@@ -1,29 +1,57 @@
 import { useEffect, useState } from "react";
-import { Card } from "./components/Card";
+import { Card } from "../components/Card";
 import {
+	// userCards,
+	// computerCards,
+	// userScore,
+	// computerScore,
 	getCard,
-	userCards,
-	computerCards,
-	userScore,
-	computerScore,
 	getPoints,
-} from "./utils/Functions";
-import { calculateScore } from "./utils/CalculateScore";
+	startGame,
+} from "../utils/Functions";
+import { calculateScore } from "../utils/CalculateScore";
 
 export const Blackjack = () => {
+	const emptyCards = [];
+	const emptyScore = 0;
+
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
 
-	const [playerCards, setPlayerCards] = useState(userCards);
-	const [dealerCards, setDealerCards] = useState(computerCards);
+	const [playerCards, setPlayerCards] = useState([]);
+	const [dealerCards, setDealerCards] = useState([]);
 
-	const [playerScore, setPlayerScore] = useState(userScore);
-	const [dealerScore, setDealerScore] = useState(computerScore);
+	const [playerScore, setPlayerScore] = useState(0);
+	const [dealerScore, setDealerScore] = useState(0);
 	const dealerTempScore = getPoints(dealerCards[0]);
 
 	const [catLives, setCatLives] = useState(9);
 	// console.log(playerCards);
 	// console.log(dealerCards);
+
+	useEffect(() => {
+		if (playerScore === 0 && dealerScore === 0) {
+			startGame({
+				playerCards,
+				setPlayerCards,
+				playerScore,
+				setPlayerScore,
+				dealerCards,
+				setDealerCards,
+				dealerScore,
+				setDealerScore,
+			});
+		}
+	}, [
+		playerCards,
+		setPlayerCards,
+		playerScore,
+		setPlayerScore,
+		dealerCards,
+		setDealerCards,
+		dealerScore,
+		setDealerScore,
+	]);
 
 	useEffect(() => {
 		if (dealerScore === 21 && dealerCards.length === 2) {
@@ -90,7 +118,14 @@ export const Blackjack = () => {
 
 	// BUTTON: Player clicks "Play Again" to start new game
 	const buttonPlayAgain = () => {
-		window.location.reload();
+		// window.location.reload();
+
+		setPlayerCards([]);
+		setDealerCards([]);
+		setPlayerScore(0);
+		setDealerScore(0);
+		setTurnOver(false);
+		setResult("");
 	};
 
 	// ===============================================
@@ -142,7 +177,11 @@ export const Blackjack = () => {
 			) : (
 				<div>
 					{" "}
-					<button onClick={() => buttonPlayAgain()}>
+					<button
+						onClick={() => {
+							buttonPlayAgain();
+						}}
+					>
 						Play Again
 					</button>
 				</div>
