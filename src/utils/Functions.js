@@ -1,3 +1,4 @@
+import { calculateScore } from "./CalculateScore";
 import { fullDeck } from "./Deck";
 
 const userCards = [];
@@ -37,15 +38,16 @@ export const getPoints = (card) => {
 // LOOP: Draw 2 cards for player/dealer when game starts
 for (let i = 0; i < 2; i++) {
 	const newUserCard = getCard();
-	userScore += getPoints(newUserCard);
 	userCards.push(newUserCard);
+	const newUserScore = userScore + getPoints(newUserCard);
+	const finalUserScore = calculateScore(userCards, newUserScore);
+	userScore = finalUserScore;
 
 	const newComputerCard = getCard();
-	computerScore += getPoints(newComputerCard);
 	computerCards.push(newComputerCard);
-
-	// userScore += userCards[i].points;
-	// computerScore += computerCards[i].points;
+	const newComputerScore = computerScore + getPoints(newComputerCard);
+	const finalComputerScore = calculateScore(userCards, newComputerScore);
+	computerScore = finalComputerScore;
 }
 
 export { userCards, computerCards, userScore, computerScore };
