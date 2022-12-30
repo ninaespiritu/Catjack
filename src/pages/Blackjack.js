@@ -77,7 +77,14 @@ export const Blackjack = () => {
 			setCatLives(loseCatLives);
 			// window.localStorage.setItem("catLives", loseCatLives);
 		}
-	}, [playerScore, dealerScore, playerCards.length, dealerCards.length]);
+	}, [
+		playerScore,
+		dealerScore,
+		playerCards.length,
+		dealerCards.length,
+		catLives,
+		setCatLives,
+	]);
 
 	if (turnOver && result === "") {
 		setTimeout(() => {
