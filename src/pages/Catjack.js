@@ -11,7 +11,7 @@ import {
 } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
 
-export const Blackjack = () => {
+export const Catjack = () => {
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
 
