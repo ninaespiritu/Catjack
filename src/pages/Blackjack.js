@@ -12,9 +12,6 @@ import {
 import { calculateScore } from "../utils/CalculateScore";
 
 export const Blackjack = () => {
-	const emptyCards = [];
-	const emptyScore = 0;
-
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
 
@@ -25,9 +22,13 @@ export const Blackjack = () => {
 	const [dealerScore, setDealerScore] = useState(0);
 	const dealerTempScore = getPoints(dealerCards[0]);
 
-	const [catLives, setCatLives] = useState(9);
+	const [catLives, setCatLives] = useState(3);
 	// console.log(playerCards);
 	// console.log(dealerCards);
+
+	// useEffect(() => {
+	// 	setCatLives(JSON.parse(window.localStorage.getItem("catLives")));
+	// });
 
 	useEffect(() => {
 		if (playerScore === 0 && dealerScore === 0) {
@@ -57,15 +58,24 @@ export const Blackjack = () => {
 		if (dealerScore === 21 && dealerCards.length === 2) {
 			setResult("Dealer has Blackjack. You lose.");
 			setTurnOver(true);
+			const loseCatLives = catLives - 1;
+			setCatLives(loseCatLives);
+			// window.localStorage.setItem("catLives", loseCatLives);
 		} else if (playerScore === 21 && playerCards.length === 2) {
 			setResult("You have Blackjack! You win!");
 			setTurnOver(true);
+			const addCatLives = catLives + 1;
+			setCatLives(addCatLives);
+			// window.localStorage.setItem("catLives", addCatLives);
 		} else if (playerScore === 21 && dealerScore < 21) {
 			setResult("You win!");
 			setTurnOver(true);
 		} else if (playerScore > 21) {
 			setResult("You went over 21. You lose.");
 			setTurnOver(true);
+			const loseCatLives = catLives - 1;
+			setCatLives(loseCatLives);
+			// window.localStorage.setItem("catLives", loseCatLives);
 		}
 	}, [playerScore, dealerScore, playerCards.length, dealerCards.length]);
 
@@ -89,6 +99,9 @@ export const Blackjack = () => {
 			setResult("Dealer went over 21. You win!");
 		} else if (playerScore < dealerScore) {
 			setResult("Dealer has the higher score. You lose.");
+			const loseCatLives = catLives - 1;
+			setCatLives(loseCatLives);
+			// window.localStorage.setItem("catLives", loseCatLives);
 		}
 	};
 
@@ -131,59 +144,80 @@ export const Blackjack = () => {
 	// ===============================================
 	return (
 		<div>
-			<h2>Dealer Score: {turnOver ? dealerScore : dealerTempScore}</h2>
-			{turnOver ? (
-				<div style={{ display: "flex" }}>
-					{dealerCards.map((card, i) => (
-						<Card card={card} key={i} />
-					))}
-				</div>
-			) : (
-				<div style={{ display: "flex" }}>
-					<Card card={dealerCards[0]} />
-					<Card />
-				</div>
-			)}
-
-			<p>{result}</p>
-
-			{[...Array(catLives)].map((e, i) => (
-				<span key={i}>&#9825;</span>
-			))}
-
-			<h2>Player Score: {playerScore}</h2>
-			<div style={{ display: "flex" }}>
-				{playerCards.map((card, i) => (
-					<Card card={card} key={i} />
+			<div>
+				{[...Array(catLives)].map((e, i) => (
+					<span key={i}>&#9825;</span>
 				))}
+				<p>Lives Left: {catLives}</p>
 			</div>
 
-			{result === "" ? (
+			{catLives === 0 ? (
 				<div>
+					<h2>Game Over</h2>
 					<button
-						onClick={() =>
-							buttonHit(
-								playerCards,
-								setPlayerCards,
-								playerScore,
-								setPlayerScore
-							)
-						}
+						onClick={() => {
+							// window.localStorage.setItem("catLives", 3);
+							window.location.reload();
+						}}
 					>
-						Hit
+						Restart Game
 					</button>
-					<button onClick={() => buttonStand()}>Stand</button>
 				</div>
 			) : (
 				<div>
-					{" "}
-					<button
-						onClick={() => {
-							buttonPlayAgain();
-						}}
-					>
-						Play Again
-					</button>
+					<h2>
+						Dealer Score: {turnOver ? dealerScore : dealerTempScore}
+					</h2>
+					{turnOver ? (
+						<div style={{ display: "flex" }}>
+							{dealerCards.map((card, i) => (
+								<Card card={card} key={i} />
+							))}
+						</div>
+					) : (
+						<div style={{ display: "flex" }}>
+							<Card card={dealerCards[0]} />
+							<Card />
+						</div>
+					)}
+
+					<p>{result}</p>
+
+					<h2>Player Score: {playerScore}</h2>
+					<div style={{ display: "flex" }}>
+						{playerCards.map((card, i) => (
+							<Card card={card} key={i} />
+						))}
+					</div>
+
+					{result === "" ? (
+						<div>
+							<button
+								onClick={() =>
+									buttonHit(
+										playerCards,
+										setPlayerCards,
+										playerScore,
+										setPlayerScore
+									)
+								}
+							>
+								Hit
+							</button>
+							<button onClick={() => buttonStand()}>Stand</button>
+						</div>
+					) : (
+						<div>
+							{" "}
+							<button
+								onClick={() => {
+									buttonPlayAgain();
+								}}
+							>
+								Play Again
+							</button>
+						</div>
+					)}
 				</div>
 			)}
 		</div>
