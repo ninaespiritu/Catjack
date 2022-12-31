@@ -1,6 +1,6 @@
 import "./App.css";
-import { Home } from "./pages/Home";
-import { Catjack } from "./pages/Catjack";
+import Home from "./pages/Home";
+import Catjack from "./pages/Catjack";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {

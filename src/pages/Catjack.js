@@ -1,3 +1,4 @@
+import "../styles/Catjack.css";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
 import {
@@ -10,8 +11,11 @@ import {
 	startGame,
 } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
+import textHit from "../assets/textHit.png";
+import textStand from "../assets/textStand.png";
+import textPlayAgain from "../assets/textPlayAgain.png";
 
-export const Catjack = () => {
+const Catjack = () => {
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
 
@@ -75,6 +79,7 @@ export const Catjack = () => {
 			setTurnOver(true);
 			const loseCatLives = catLives - 1;
 			setCatLives(loseCatLives);
+			console.log(catLives);
 			// window.localStorage.setItem("catLives", loseCatLives);
 		}
 	}, [
@@ -150,7 +155,7 @@ export const Catjack = () => {
 
 	// ===============================================
 	return (
-		<div>
+		<div className="play">
 			<div>
 				{[...Array(catLives)].map((e, i) => (
 					<span key={i}>&#9825;</span>
@@ -209,9 +214,15 @@ export const Catjack = () => {
 									)
 								}
 							>
-								Hit
+								<div>
+									<img src={textHit} />
+								</div>
 							</button>
-							<button onClick={() => buttonStand()}>Stand</button>
+							<button onClick={() => buttonStand()}>
+								<div>
+									<img src={textStand} />
+								</div>
+							</button>
 						</div>
 					) : (
 						<div>
@@ -221,7 +232,9 @@ export const Catjack = () => {
 									buttonPlayAgain();
 								}}
 							>
-								Play Again
+								<div>
+									<img src={textPlayAgain} />
+								</div>
 							</button>
 						</div>
 					)}
@@ -230,3 +243,5 @@ export const Catjack = () => {
 		</div>
 	);
 };
+
+export default Catjack;
