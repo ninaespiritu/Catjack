@@ -1,15 +1,10 @@
-import "../styles/Catjack.css";
 import { useEffect, useState } from "react";
-import { Card } from "../components/Card";
+import "../styles/Catjack.css";
+import Card from "../components/Card";
 import { getCard, getPoints, startGame } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
-import cardGreen from "../assets/cardGreen.png";
-import cardPink from "../assets/cardPink.png";
-import cardPurple from "../assets/cardPurple.png";
-import cardDealer from "../assets/cardDealer.png";
-import cardHide from "../assets/cardHide.png";
 
-const Catjack = ({ musicToggle, musicPlaying }) => {
+const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 	// VARIABLES: Game
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
@@ -19,11 +14,6 @@ const Catjack = ({ musicToggle, musicPlaying }) => {
 	const [playerScore, setPlayerScore] = useState(0);
 	const [dealerScore, setDealerScore] = useState(0);
 	const dealerTempScore = getPoints(dealerCards[0]);
-
-	// VARIABLE: Design
-	const [colorCard, setColorCard] = useState(cardGreen);
-	const colorCardDealer = cardDealer;
-	const colorCardHide = cardHide;
 
 	// One page loads, call startGame() to get player's and dealer's cards
 	useEffect(() => {
@@ -246,35 +236,6 @@ const Catjack = ({ musicToggle, musicPlaying }) => {
 					)}
 				</div>
 			)}
-
-			<br />
-
-			<section className="footer">
-				<button
-					className="button-color card-green"
-					onClick={() => setColorCard(cardGreen)}
-				></button>
-				<button
-					className="button-color card-pink"
-					onClick={() => setColorCard(cardPink)}
-				></button>
-				<button
-					className="button-color card-purple"
-					onClick={() => setColorCard(cardPurple)}
-				></button>
-				<p>
-					colour:{" "}
-					{colorCard === cardGreen
-						? "green"
-						: colorCard === cardPink
-						? "pink"
-						: "purple"}
-				</p>
-
-				<p onClick={() => musicToggle()}>
-					music: {musicPlaying ? "on" : "off"}
-				</p>
-			</section>
 		</div>
 	);
 };

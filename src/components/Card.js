@@ -1,6 +1,6 @@
 import "../styles/Card.css";
 
-export const Card = ({ card, colorCard }) => {
+const Card = ({ card, colorCard }) => {
 	// Value of colorCard is set as backgroundImage
 	const colorCardStyle = {
 		backgroundImage: `url(${colorCard})`,
@@ -12,3 +12,5 @@ export const Card = ({ card, colorCard }) => {
 		</div>
 	);
 };
+
+export default Card;

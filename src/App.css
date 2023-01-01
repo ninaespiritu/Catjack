@@ -25,6 +25,20 @@
   font-family: var(--font);
 }
 
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url(./assets/backgroundCats.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 button {
   cursor: pointer;
 }
