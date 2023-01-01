@@ -17,7 +17,7 @@ const Catjack = () => {
 	const [dealerScore, setDealerScore] = useState(0);
 	const dealerTempScore = getPoints(dealerCards[0]);
 
-	// Renders the player and dealer's two cards upon page load
+	// One page loads, call startGame() to get player's and dealer's cards
 	useEffect(() => {
 		if (playerScore === 0 && dealerScore === 0) {
 			startGame({
