@@ -9,7 +9,7 @@ import cardPurple from "../assets/cardPurple.png";
 import cardDealer from "../assets/cardDealer.png";
 import cardHide from "../assets/cardHide.png";
 
-const Catjack = () => {
+const Catjack = ({ musicToggle, musicPlaying }) => {
 	// VARIABLES: Game
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
@@ -154,17 +154,6 @@ const Catjack = () => {
 		}
 	};
 
-	// STYLE: Change card colour according to selected option value
-	// const changeColorCard = (e) => {
-	// 	if (e.target.value === "green") {
-	// 		setColorCard(cardGreen);
-	// 	} else if (e.target.value === "pink") {
-	// 		setColorCard(cardPink);
-	// 	} else if (e.target.value === "purple") {
-	// 		setColorCard(cardPurple);
-	// 	}
-	// };
-
 	// ===============================================
 	return (
 		<div className="play">
@@ -273,29 +262,18 @@ const Catjack = () => {
 					className="button-color card-purple"
 					onClick={() => setColorCard(cardPurple)}
 				></button>
-				<p>colour: green</p>
+				<p>
+					colour:{" "}
+					{colorCard === cardGreen
+						? "green"
+						: colorCard === cardPink
+						? "pink"
+						: "purple"}
+				</p>
 
-				{/* <div
-					className={
-						colorCard === cardGreen
-							? "footer-color card-green"
-							: colorCard === cardPink
-							? "footer-color card-pink"
-							: "footer-color card-purple"
-					}
-				/>
-				<label for="color">colour: </label>
-				<select
-					name="color"
-					id="color"
-					onChange={(e) => changeColorCard(e)}
-				>
-					<option value="green" selected>
-						green
-					</option>
-					<option value="pink">pink</option>
-					<option value="purple">purple</option>
-				</select> */}
+				<p onClick={() => musicToggle()}>
+					music: {musicPlaying ? "on" : "off"}
+				</p>
 			</section>
 		</div>
 	);
