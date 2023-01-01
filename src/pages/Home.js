@@ -6,7 +6,7 @@ const Home = ({ musicPlay }) => {
 	return (
 		<div className="home">
 			<div className="home-logo">
-				<img src={logoCatjack} />
+				<img src={logoCatjack} alt="" />
 			</div>
 			<h2>a cat-themed Blackjack game</h2>
 			<Link to="/play">
