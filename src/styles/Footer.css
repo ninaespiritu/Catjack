@@ -1,0 +1,35 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-group {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-icon {
+  margin: 0 12px 0 0;
+}
+
+.button-color {
+  margin: 0 0 0 4px;
+  width: 32px;
+  height: 32px;
+  border: 5px solid var(--color-white);
+  border-radius: 100%;
+}
+
+.card-green {
+  background-color: var(--color-green-dark);
+}
+
+.card-pink {
+  background-color: var(--color-pink-dark);
+}
+
+.card-purple {
+  background-color: var(--color-purple-dark);
+}

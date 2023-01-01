@@ -7,25 +7,6 @@
   align-items: center;
 }
 
-.button-color {
-  width: 36px;
-  height: 36px;
-  border: 5px solid var(--color-white);
-  border-radius: 100%;
-}
-
-.card-green {
-  background-color: var(--color-green-dark);
-}
-
-.card-pink {
-  background-color: var(--color-pink-dark);
-}
-
-.card-purple {
-  background-color: var(--color-purple-dark);
-}
-
 .footer {
   font-size: var(--font-footer);
   font-weight: bold;
