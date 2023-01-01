@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
 import { getCard, getPoints, startGame } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
-import textHit from "../assets/textHit.png";
-import textStand from "../assets/textStand.png";
-import textPlayAgain from "../assets/textPlayAgain.png";
+import cardGreen from "../assets/cardGreen.png";
+import cardPink from "../assets/cardPink.png";
+import cardPurple from "../assets/cardPurple.png";
+import cardDealer from "../assets/cardDealer.png";
+import cardHide from "../assets/cardHide.png";
 
 const Catjack = () => {
+	// VARIABLES: Game
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
 	const [catLives, setCatLives] = useState(3);
@@ -16,6 +19,11 @@ const Catjack = () => {
 	const [playerScore, setPlayerScore] = useState(0);
 	const [dealerScore, setDealerScore] = useState(0);
 	const dealerTempScore = getPoints(dealerCards[0]);
+
+	// VARIABLE: Design
+	const [colorCard, setColorCard] = useState(cardGreen);
+	const colorCardDealer = cardDealer;
+	const colorCardHide = cardHide;
 
 	// One page loads, call startGame() to get player's and dealer's cards
 	useEffect(() => {
@@ -146,6 +154,17 @@ const Catjack = () => {
 		}
 	};
 
+	// STYLE: Change card colour according to selected option value
+	// const changeColorCard = (e) => {
+	// 	if (e.target.value === "green") {
+	// 		setColorCard(cardGreen);
+	// 	} else if (e.target.value === "pink") {
+	// 		setColorCard(cardPink);
+	// 	} else if (e.target.value === "purple") {
+	// 		setColorCard(cardPurple);
+	// 	}
+	// };
+
 	// ===============================================
 	return (
 		<div className="play">
@@ -175,13 +194,20 @@ const Catjack = () => {
 					{turnOver ? (
 						<div style={{ display: "flex" }}>
 							{dealerCards.map((card, i) => (
-								<Card card={card} key={i} />
+								<Card
+									card={card}
+									key={i}
+									colorCard={colorCardDealer}
+								/>
 							))}
 						</div>
 					) : (
 						<div style={{ display: "flex" }}>
-							<Card card={dealerCards[0]} />
-							<Card />
+							<Card
+								card={dealerCards[0]}
+								colorCard={colorCardDealer}
+							/>
+							<Card colorCard={colorCardHide} />
 						</div>
 					)}
 
@@ -190,13 +216,14 @@ const Catjack = () => {
 					<h2>Player Score: {playerScore}</h2>
 					<div style={{ display: "flex" }}>
 						{playerCards.map((card, i) => (
-							<Card card={card} key={i} />
+							<Card card={card} key={i} colorCard={colorCard} />
 						))}
 					</div>
 
 					{result === "" ? (
 						<div>
 							<button
+								className="button-play"
 								onClick={() =>
 									buttonHit(
 										playerCards,
@@ -206,32 +233,70 @@ const Catjack = () => {
 									)
 								}
 							>
-								<div>
-									<img src={textHit} />
-								</div>
+								<div>Hit</div>
 							</button>
-							<button onClick={() => buttonStand()}>
-								<div>
-									<img src={textStand} />
-								</div>
+							<button
+								className="button-play"
+								onClick={() => buttonStand()}
+							>
+								<div>Stand</div>
 							</button>
 						</div>
 					) : (
 						<div>
 							{" "}
 							<button
+								className="button-play"
 								onClick={() => {
 									buttonPlayAgain();
 								}}
 							>
-								<div>
-									<img src={textPlayAgain} />
-								</div>
+								<div>Play Again</div>
 							</button>
 						</div>
 					)}
 				</div>
 			)}
+
+			<br />
+
+			<section className="footer">
+				<button
+					className="button-color card-green"
+					onClick={() => setColorCard(cardGreen)}
+				></button>
+				<button
+					className="button-color card-pink"
+					onClick={() => setColorCard(cardPink)}
+				></button>
+				<button
+					className="button-color card-purple"
+					onClick={() => setColorCard(cardPurple)}
+				></button>
+				<p>colour: green</p>
+
+				{/* <div
+					className={
+						colorCard === cardGreen
+							? "footer-color card-green"
+							: colorCard === cardPink
+							? "footer-color card-pink"
+							: "footer-color card-purple"
+					}
+				/>
+				<label for="color">colour: </label>
+				<select
+					name="color"
+					id="color"
+					onChange={(e) => changeColorCard(e)}
+				>
+					<option value="green" selected>
+						green
+					</option>
+					<option value="pink">pink</option>
+					<option value="purple">purple</option>
+				</select> */}
+			</section>
 		</div>
 	);
 };

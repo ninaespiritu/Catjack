@@ -2,11 +2,19 @@
 
 :root {
   --font: "Gaegu", monospace;
+  --font-footer: 24px;
   --color-bg: #FFE9B3;
   --color-brown: #946241;
   --color-brown-light: #BE8E6E;
   --color-brown-dark: #6D4931; 
+  --color-brown-black: #5c3e2b; 
   --color-white: #F7F7DD;
+  --color-green: #DFFAA0;
+  --color-green-dark: #A9C78B;
+  --color-pink: #FFD2C6;
+  --color-pink-dark: #FF9A99;
+  --color-purple: #DDDAFF;
+  --color-purple-dark: #AFA8FF;
 }
 
 * {
@@ -18,17 +26,20 @@
 }
 
 button {
+  cursor: pointer;
+}
+
+.button-play {
   padding: 5px;
   width: 340px;
   height: 88px;
   border: 5px solid var(--color-white);
   border-radius: 32px;
-  /* box-shadow: inset -5px -5px 5px 5px var(--color-brown-light); */
   background-color: var(--color-brown);
-  cursor: pointer;
+  /* box-shadow: inset 5px 5px 10px 0px var(--color-brown-dark); */
 }
 
-button div {
+.button-play div {
   width: 100%;
   height: 100%;
   display: flex;
@@ -38,12 +49,13 @@ button div {
   border-bottom: 5px solid var(--color-brown-light);
   border-right: 5px solid var(--color-brown-light);
   border-radius: 24px;
-  /* color: var(--color-white);
+  color: var(--color-white);
   font-size: 32px;
   font-weight: bold;
-  text-transform: uppercase; */
+  text-transform: uppercase;
+  text-shadow: 3px 3px 6px var(--color-brown-black);
 }
 
-button div img {
+/* .button-play div img {
   height: 45%;
-}
+} */

@@ -1,8 +1,6 @@
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import logoCatjack from "../assets/logoCatjack.png";
-import buttonPlayNow from "../assets/buttonPlayNow.png";
-import textPlayNow from "../assets/textPlayNow.png";
 
 const Home = () => {
 	return (
@@ -12,9 +10,9 @@ const Home = () => {
 			</div>
 			<h2>a cat-themed Blackjack game</h2>
 			<Link to="/play">
-				<button>
+				<button className="button-play">
 					<div>
-						<img src={textPlayNow} />
+						Play Now
 					</div>
 				</button>
 			</Link>
