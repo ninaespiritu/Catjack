@@ -1,15 +1,7 @@
 import "../styles/Catjack.css";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
-import {
-	// userCards,
-	// computerCards,
-	// userScore,
-	// computerScore,
-	getCard,
-	getPoints,
-	startGame,
-} from "../utils/Functions";
+import { getCard, getPoints, startGame } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
 import textHit from "../assets/textHit.png";
 import textStand from "../assets/textStand.png";
@@ -18,22 +10,14 @@ import textPlayAgain from "../assets/textPlayAgain.png";
 const Catjack = () => {
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
-
+	const [catLives, setCatLives] = useState(3);
 	const [playerCards, setPlayerCards] = useState([]);
 	const [dealerCards, setDealerCards] = useState([]);
-
 	const [playerScore, setPlayerScore] = useState(0);
 	const [dealerScore, setDealerScore] = useState(0);
 	const dealerTempScore = getPoints(dealerCards[0]);
 
-	const [catLives, setCatLives] = useState(3);
-	// console.log(playerCards);
-	// console.log(dealerCards);
-
-	// useEffect(() => {
-	// 	setCatLives(JSON.parse(window.localStorage.getItem("catLives")));
-	// });
-
+	// Renders the player and dealer's two cards upon page load
 	useEffect(() => {
 		if (playerScore === 0 && dealerScore === 0) {
 			startGame({
@@ -58,29 +42,16 @@ const Catjack = () => {
 		setDealerScore,
 	]);
 
+	// Constantly checks for automatic wins/loses
 	useEffect(() => {
 		if (dealerScore === 21 && dealerCards.length === 2) {
 			setResult("Dealer has Blackjack. You lose.");
-			setTurnOver(true);
-			const loseCatLives = catLives - 1;
-			setCatLives(loseCatLives);
-			// window.localStorage.setItem("catLives", loseCatLives);
 		} else if (playerScore === 21 && playerCards.length === 2) {
 			setResult("You have Blackjack! You win!");
-			setTurnOver(true);
-			const addCatLives = catLives + 1;
-			setCatLives(addCatLives);
-			// window.localStorage.setItem("catLives", addCatLives);
 		} else if (playerScore === 21 && dealerScore < 21) {
 			setResult("You win!");
-			setTurnOver(true);
 		} else if (playerScore > 21) {
 			setResult("You went over 21. You lose.");
-			setTurnOver(true);
-			const loseCatLives = catLives - 1;
-			setCatLives(loseCatLives);
-			console.log(catLives);
-			// window.localStorage.setItem("catLives", loseCatLives);
 		}
 	}, [
 		playerScore,
@@ -91,12 +62,29 @@ const Catjack = () => {
 		setCatLives,
 	]);
 
-	if (turnOver && result === "") {
-		setTimeout(() => {
-			calculateResult();
-		}, 1000);
+	// Calculates lives left after an automatic win/lose
+	const calculateResultLives = () => {
+		if (dealerScore === 21 && dealerCards.length === 2) {
+			setTurnOver(true);
+			const loseCatLives = catLives - 1;
+			setCatLives(loseCatLives);
+		} else if (playerScore === 21 && playerCards.length === 2) {
+			setTurnOver(true);
+			const addCatLives = catLives + 1;
+			setCatLives(addCatLives);
+		} else if (playerScore > 21) {
+			setTurnOver(true);
+			const loseCatLives = catLives - 1;
+			setCatLives(loseCatLives);
+		}
+	};
+
+	// If there is an automatic win/lose, run above function
+	if (!turnOver && result !== "") {
+		calculateResultLives();
 	}
 
+	// Calculates winner and lives left after player clicks "Stand"
 	const calculateResult = () => {
 		if (
 			(playerScore === 21 && dealerScore === 21) ||
@@ -113,20 +101,17 @@ const Catjack = () => {
 			setResult("Dealer has the higher score. You lose.");
 			const loseCatLives = catLives - 1;
 			setCatLives(loseCatLives);
-			// window.localStorage.setItem("catLives", loseCatLives);
 		}
 	};
 
-	const dealerHit = () => {
-		if (dealerScore < 17 || dealerScore < playerScore) {
-			buttonHit(dealerCards, setDealerCards, dealerScore, setDealerScore);
-			return true;
-		} else {
-			return false;
-		}
-	};
+	// If player's turn ends by clicking "Stand", run above function
+	if (turnOver && result === "") {
+		setTimeout(() => {
+			calculateResult();
+		}, 1000);
+	}
 
-	// BUTTON: Player clicks "Hit" to draw new card
+	// Player clicks "Hit" to draw new card
 	const buttonHit = (cards, setCards, score, setScore) => {
 		const newCard = getCard();
 		const newCards = [...cards, newCard];
@@ -136,21 +121,29 @@ const Catjack = () => {
 		setScore(finalScore);
 	};
 
-	// BUTTON: Player clicks "Stand" to end turn
+	// Player clicks "Stand" to end turn
 	const buttonStand = () => {
 		setTurnOver(true);
 	};
 
-	// BUTTON: Player clicks "Play Again" to start new game
+	// Player clicks "Play Again" to start new game
 	const buttonPlayAgain = () => {
-		// window.location.reload();
-
 		setPlayerCards([]);
 		setDealerCards([]);
 		setPlayerScore(0);
 		setDealerScore(0);
 		setTurnOver(false);
 		setResult("");
+	};
+
+	// Dealer repeatedly calls buttonHit() during its turn
+	const dealerHit = () => {
+		if (dealerScore < 17 || dealerScore < playerScore) {
+			buttonHit(dealerCards, setDealerCards, dealerScore, setDealerScore);
+			return true;
+		} else {
+			return false;
+		}
 	};
 
 	// ===============================================
@@ -168,7 +161,6 @@ const Catjack = () => {
 					<h2>Game Over</h2>
 					<button
 						onClick={() => {
-							// window.localStorage.setItem("catLives", 3);
 							window.location.reload();
 						}}
 					>
