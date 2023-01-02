@@ -18,6 +18,7 @@ const App = () => {
 	const colorCardHide = cardHide;
 
 	// VARIABLES: Music
+	const [musicAutoplay, setMusicAutoplay] = useState(false);
 	const [musicPlaying, setMusicPlaying] = useState(false);
 	const musicRef = useRef(new Audio(musicBackground));
 
@@ -31,6 +32,15 @@ const App = () => {
 		}
 	};
 
+	const musicPlay = () => {
+		if (!musicAutoplay) {
+			setMusicAutoplay(true);
+			setMusicPlaying(true);
+			console.log(musicAutoplay);
+			musicRef.current.play();
+		}
+	};
+
 	return (
 		<div className="app">
 			<BrowserRouter>
@@ -39,8 +49,7 @@ const App = () => {
 						path="/"
 						element={
 							<Home
-								musicToggle={musicToggle}
-								musicPlaying={musicPlaying}
+								musicPlay={musicPlay}
 							/>
 						}
 					/>
@@ -48,8 +57,6 @@ const App = () => {
 						path="/play"
 						element={
 							<Catjack
-								musicToggle={musicToggle}
-								musicPlaying={musicPlaying}
 								colorCard={colorCard}
 								colorCardDealer={colorCardDealer}
 								colorCardHide={colorCardHide}

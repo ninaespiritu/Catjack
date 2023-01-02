@@ -3,6 +3,7 @@ import "../styles/Catjack.css";
 import Card from "../components/Card";
 import { getCard, getPoints, startGame } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
+import { Link } from "react-router-dom";
 
 const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 	// VARIABLES: Game
@@ -157,13 +158,9 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 			{catLives === 0 ? (
 				<div>
 					<h2>Game Over</h2>
-					<button
-						onClick={() => {
-							window.location.reload();
-						}}
-					>
-						Restart Game
-					</button>
+					<Link to="/">
+						<button>Back to Home</button>
+					</Link>
 				</div>
 			) : (
 				<div>
