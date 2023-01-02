@@ -48,6 +48,7 @@ const Footer = ({
 				<a
 					href="https://github.com/ninaespiritu/Catjack"
 					target="_blank"
+					rel="noreferrer"
 				>
 					<p>github</p>
 				</a>
