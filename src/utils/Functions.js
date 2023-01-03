@@ -1,11 +1,13 @@
 import { calculateScore } from "./CalculateScore";
-import { fullDeck } from "./Deck";
 
 // FUNCTION: Draw card and convert points
-export const getCard = () => {
-	const index = Math.floor(Math.random() * fullDeck.length);
-	const card = fullDeck[index];
-	fullDeck.splice(index, 1);
+export const getCard = ({ gameDeck, setGameDeck }) => {
+	const newDeck = gameDeck;
+	const index = Math.floor(Math.random() * newDeck.length);
+	const card = newDeck[index];
+	newDeck.splice(index, 1);
+	console.log(newDeck.length);
+	setGameDeck(newDeck);
 	return card;
 };
 
@@ -32,6 +34,8 @@ export const getPoints = (card) => {
 
 // FUNCTION: Draw 2 cards each for player and dealer + convert their points
 export const startGame = ({
+	gameDeck,
+	setGameDeck,
 	playerCards,
 	setPlayerCards,
 	playerScore,
@@ -41,8 +45,8 @@ export const startGame = ({
 	dealerScore,
 	setDealerScore,
 }) => {
-	const newPlayerCard_1 = getCard();
-	const newPlayerCard_2 = getCard();
+	const newPlayerCard_1 = getCard({ gameDeck, setGameDeck });
+	const newPlayerCard_2 = getCard({ gameDeck, setGameDeck });
 	const newPlayerCards = [...playerCards, newPlayerCard_1, newPlayerCard_2];
 	setPlayerCards(newPlayerCards);
 	const pointsPlayerCard_1 = getPoints(newPlayerCard_1);
@@ -52,8 +56,8 @@ export const startGame = ({
 	const finalPlayerScore = calculateScore(newPlayerCards, newPlayerScore);
 	setPlayerScore(finalPlayerScore);
 
-	const newDealerCard_1 = getCard();
-	const newDealerCard_2 = getCard();
+	const newDealerCard_1 = getCard({ gameDeck, setGameDeck });
+	const newDealerCard_2 = getCard({ gameDeck, setGameDeck });
 	const newDealerCards = [...dealerCards, newDealerCard_1, newDealerCard_2];
 	setDealerCards(newDealerCards);
 	const pointsDealerCard_1 = getPoints(newDealerCard_1);

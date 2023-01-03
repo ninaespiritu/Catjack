@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import "../styles/Catjack.css";
 import Card from "../components/Card";
+import { fullDeck } from "../utils/Deck";
 import { getCard, getPoints, startGame } from "../utils/Functions";
 import { calculateScore } from "../utils/CalculateScore";
-import { Link } from "react-router-dom";
 
 const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 	// VARIABLES: Game
+	const [gameDeck, setGameDeck] = useState([...fullDeck]);
+	const [gameOver, setGameOver] = useState(false);
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
-	const [catLives, setCatLives] = useState(3);
+	const [catLives, setCatLives] = useState(9);
 	const [playerCards, setPlayerCards] = useState([]);
 	const [dealerCards, setDealerCards] = useState([]);
 	const [playerScore, setPlayerScore] = useState(0);
@@ -20,6 +22,8 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 	useEffect(() => {
 		if (playerScore === 0 && dealerScore === 0) {
 			startGame({
+				gameDeck,
+				setGameDeck,
 				playerCards,
 				setPlayerCards,
 				playerScore,
@@ -112,7 +116,7 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 
 	// Player clicks "Hit" to draw new card
 	const buttonHit = (cards, setCards, score, setScore) => {
-		const newCard = getCard();
+		const newCard = getCard({ gameDeck, setGameDeck });
 		const newCards = [...cards, newCard];
 		setCards(newCards);
 		const newScore = score + getPoints(newCard);
@@ -127,6 +131,9 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 
 	// Player clicks "Play Again" to start new game
 	const buttonPlayAgain = () => {
+		const refreshDeck = fullDeck;
+		console.log(refreshDeck);
+		setGameDeck([...refreshDeck]);
 		setPlayerCards([]);
 		setDealerCards([]);
 		setPlayerScore(0);
@@ -145,6 +152,14 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 		}
 	};
 
+	useEffect(() => {
+		if (catLives === 0) {
+			setTimeout(() => {
+				setGameOver(true);
+			}, 2000);
+		}
+	}, [catLives]);
+
 	// ===============================================
 	return (
 		<div className="play">
@@ -155,12 +170,14 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 				<p>Lives Left: {catLives}</p>
 			</div>
 
-			{catLives === 0 ? (
+			{gameOver ? (
 				<div>
 					<h2>Game Over</h2>
-					<Link to="/">
-						<button>Back to Home</button>
-					</Link>
+					{/* <Link to="/"> */}
+					<button onClick={() => window.location.reload()}>
+						Back to Home
+					</button>
+					{/* </Link> */}
 				</div>
 			) : (
 				<div>
@@ -200,6 +217,7 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 						<div>
 							<button
 								className="button-play"
+								disabled={turnOver}
 								onClick={() =>
 									buttonHit(
 										playerCards,
@@ -213,6 +231,7 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 							</button>
 							<button
 								className="button-play"
+								disabled={turnOver}
 								onClick={() => buttonStand()}
 							>
 								<div>Stand</div>
@@ -223,6 +242,7 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 							{" "}
 							<button
 								className="button-play"
+								disabled={catLives === 0}
 								onClick={() => {
 									buttonPlayAgain();
 								}}

@@ -1,4 +1,3 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRef, useState } from "react";
 import "./App.css";
 import Home from "./pages/Home";
@@ -12,6 +11,9 @@ import cardDealer from "./assets/cardDealer.png";
 import cardHide from "./assets/cardHide.png";
 
 const App = () => {
+	// VARIABLE: Click "Play Now" to set value to true, then render Catjack
+	const [playing, setPlaying] = useState(false);
+
 	// VARIABLEs: Design
 	const [colorCard, setColorCard] = useState(cardGreen);
 	const colorCardDealer = cardDealer;
@@ -43,28 +45,16 @@ const App = () => {
 
 	return (
 		<div className="app">
-			<BrowserRouter>
-				<Routes>
-					<Route
-						path="/"
-						element={
-							<Home
-								musicPlay={musicPlay}
-							/>
-						}
-					/>
-					<Route
-						path="/play"
-						element={
-							<Catjack
-								colorCard={colorCard}
-								colorCardDealer={colorCardDealer}
-								colorCardHide={colorCardHide}
-							/>
-						}
-					/>
-				</Routes>
-			</BrowserRouter>
+			{playing ? (
+				<Catjack
+					colorCard={colorCard}
+					colorCardDealer={colorCardDealer}
+					colorCardHide={colorCardHide}
+				/>
+			) : (
+				<Home setPlaying={setPlaying} musicPlay={musicPlay} />
+			)}
+
 			<Footer
 				musicToggle={musicToggle}
 				musicPlaying={musicPlaying}
