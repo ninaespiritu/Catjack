@@ -18,6 +18,12 @@ footer {
 }
 .footer-icon {
   margin: 0 12px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-icon.icon-music {
+  scale: 1.2;
 }
 .button-color {
   margin: 0 0 0 4px;

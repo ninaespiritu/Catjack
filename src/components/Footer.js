@@ -1,4 +1,5 @@
 import "../styles/Footer.css";
+import { BsVolumeUpFill, BsVolumeMuteFill, BsGithub } from "react-icons/bs";
 
 const Footer = ({
 	musicToggle,
@@ -37,14 +38,16 @@ const Footer = ({
 			</div>
 
 			<div className="footer-group" onClick={() => musicToggle()}>
-				<div className="footer-icon">
-					{musicPlaying ? "[#]" : "[ ]"}
+				<div className="footer-icon icon-music">
+					{musicPlaying ? <BsVolumeUpFill /> : <BsVolumeMuteFill />}
 				</div>
 				<p>music: {musicPlaying ? "on" : "off"}</p>
 			</div>
 
 			<div className="footer-group">
-				<div className="footer-icon">#</div>
+				<div className="footer-icon">
+					<BsGithub />
+				</div>
 				<a
 					href="https://github.com/ninaespiritu/Catjack"
 					target="_blank"
