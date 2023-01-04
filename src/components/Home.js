@@ -7,9 +7,9 @@ const Home = ({ setPlaying, musicPlay }) => {
 			<div className="home-logo">
 				<img src={logoCatjack} alt="" />
 			</div>
-			<h2>a cat-themed Blackjack game</h2>
+			<h3>a cat-themed Blackjack game</h3>
 			<button
-				className="button-play"
+				className="button button-big"
 				onClick={() => {
 					setPlaying(true);
 					musicPlay();

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import Home from "./pages/Home";
-import Catjack from "./pages/Catjack";
+import Home from "./components/Home";
+import Catjack from "./components/Catjack";
 import Footer from "./components/Footer";
 import musicBackground from "./assets/musicBackground.mp3";
 import cardGreen from "./assets/cardGreen.png";
@@ -22,7 +22,7 @@ const App = () => {
 	const [gameOver, setGameOver] = useState(false);
 	const [turnOver, setTurnOver] = useState(false);
 	const [result, setResult] = useState("");
-	const [catLives, setCatLives] = useState(3);
+	const [catLives, setCatLives] = useState(9);
 	const [playerCards, setPlayerCards] = useState([]);
 	const [dealerCards, setDealerCards] = useState([]);
 	const [playerScore, setPlayerScore] = useState(0);
@@ -188,7 +188,7 @@ const App = () => {
 
 	// Dealer repeatedly calls buttonHit() during its turn
 	const dealerHit = () => {
-		if (dealerScore < 18) {
+		if (dealerScore < 17) {
 			buttonHit(dealerCards, setDealerCards, dealerScore, setDealerScore);
 			return true;
 		} else {
@@ -212,6 +212,9 @@ const App = () => {
 					colorCard={colorCard}
 					colorCardDealer={colorCardDealer}
 					colorCardHide={colorCardHide}
+					cardGreen={cardGreen}
+					cardPink={cardPink}
+					cardPurple={cardPurple}
 					gameOver={gameOver}
 					setGameOver={setGameOver}
 					turnOver={turnOver}

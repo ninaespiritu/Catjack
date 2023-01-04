@@ -8,7 +8,7 @@ const Card = ({ card, colorCard }) => {
 
 	return (
 		<div className="card" style={colorCardStyle}>
-			<h3>{card}</h3>
+			<h2>{card}</h2>
 		</div>
 	);
 };

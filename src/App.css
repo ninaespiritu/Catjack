@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:wght@300;400;700&display=swap');
 
 :root {
-  --font: "Gaegu", monospace;
-  --font-footer: 24px;
+  --font: "Gaegu", "Averia Libre", "Calibri", monospace;
   --color-bg: #FFE9B3;
   --color-brown: #946241;
   --color-brown-light: #BE8E6E;
@@ -15,17 +15,21 @@
   --color-pink-dark: #FF9A99;
   --color-purple: #DDDAFF;
   --color-purple-dark: #AFA8FF;
+  --color-orange: #FFDD98;
+  --color-orange-dark: #FFC143;
+  --color-beige: #FFF0CA;
+  --color-beige-dark: #EED9A7;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--color-brown);
   font-family: var(--font);
 }
 
 .app {
+  padding: 24px 80px;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -37,27 +41,45 @@
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
+  background-color: var(--color-beige);
+  color: var(--color-brown);
 }
-
+h1 {
+  font-size: 48px;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: var(--color-brown);
+}
+h2 {
+  font-size: 36px;
+  -webkit-text-stroke-width: 1.25px;
+  -webkit-text-stroke-color: var(--color-brown);
+}
+h3 {
+  font-size: 30px;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: var(--color-brown);
+}
+a, a:visited, a:active {
+  color: var(--color-brown);
+  text-decoration: none;
+}
 button {
   cursor: pointer;
 }
-
-.button-play {
+.button {
   padding: 5px;
-  width: 340px;
+  /* width: 340px; */
   height: 88px;
   border: 5px solid var(--color-white);
   border-radius: 32px;
   background-color: var(--color-brown);
   /* box-shadow: inset 5px 5px 10px 0px var(--color-brown-dark); */
 }
-
-.button-play:disabled {
+.button:disabled {
   opacity: 0.75;
 }
-
-.button-play div {
+.button div {
   width: 100%;
   height: 100%;
   display: flex;
@@ -68,12 +90,17 @@ button {
   border-right: 5px solid var(--color-brown-light);
   border-radius: 24px;
   color: var(--color-white);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 3px 3px 6px var(--color-brown-black);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: var(--color-white);
+}
+.button-big {
+  width: 320px;
+}
+.button-small {
+  width: 210px;
 }
 
-/* .button-play div img {
-  height: 45%;
-} */

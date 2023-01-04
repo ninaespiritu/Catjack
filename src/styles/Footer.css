@@ -1,19 +1,24 @@
 footer {
+  margin: 28px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: var(--color-brown);
 }
-
 .footer-group {
   margin: 0 20px;
   display: flex;
   align-items: center;
 }
-
+.footer-group:hover {
+  cursor: pointer;
+}
 .footer-icon {
   margin: 0 12px 0 0;
 }
-
 .button-color {
   margin: 0 0 0 4px;
   width: 32px;
@@ -21,15 +26,12 @@ footer {
   border: 5px solid var(--color-white);
   border-radius: 100%;
 }
-
 .card-green {
   background-color: var(--color-green-dark);
 }
-
 .card-pink {
   background-color: var(--color-pink-dark);
 }
-
 .card-purple {
   background-color: var(--color-purple-dark);
 }
