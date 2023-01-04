@@ -38,14 +38,14 @@ const Footer = ({
 			</div>
 
 			<div className="footer-group" onClick={() => musicToggle()}>
-				<div className="footer-icon icon-music">
+				<div className="footer-icon react">
 					{musicPlaying ? <BsVolumeUpFill /> : <BsVolumeMuteFill />}
 				</div>
 				<p>music: {musicPlaying ? "on" : "off"}</p>
 			</div>
 
 			<div className="footer-group">
-				<div className="footer-icon">
+				<div className="footer-icon react">
 					<BsGithub />
 				</div>
 				<a

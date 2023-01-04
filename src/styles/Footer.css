@@ -22,8 +22,11 @@ footer {
   justify-content: center;
   align-items: center;
 }
-.footer-icon.icon-music {
-  scale: 1.2;
+.footer-icon.react {
+  background-color: var(--color-white);
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
 }
 .button-color {
   margin: 0 0 0 4px;
