@@ -35,6 +35,8 @@ const Catjack = ({ colorCard, colorCardDealer, colorCardHide }) => {
 			});
 		}
 	}, [
+		gameDeck,
+		setGameDeck,
 		playerCards,
 		setPlayerCards,
 		playerScore,
