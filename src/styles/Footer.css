@@ -60,7 +60,7 @@ footer {
 
 /* MEDIA QUERIES */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .footer-menu {
     padding: 20px;
     z-index: 9999;

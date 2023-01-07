@@ -16,7 +16,6 @@
 .catjack-logo {
   width: 160px;
 }
-
 .cat-lives {
   display: flex;
 }
@@ -60,6 +59,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  /* background-color: var(--color-white); */
 }
 .game-cards hr {
   width: 300px;
@@ -92,6 +92,7 @@
   height: 210px;
   display: flex;
   justify-content: space-between;
+  /* background-color: var(--color-white); */
 }
 .game-scores {
   padding: 8px 0;
@@ -118,4 +119,74 @@
 }
 .game-cards-results {
   text-align: center;
+}
+
+@media screen and (max-width: 1400px) {
+  .game-scores, .game-buttons {
+    width: 500px;
+  }
+  .game-scores-num {
+    width: 68px;
+    height: 68px;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .catjack header {
+    margin: 8px 0;
+  }
+  .catjack-logo {
+    width: 120px;
+  }
+  .cat-life {
+    width: 20px;
+  }
+  .game {
+    padding: 28px 0 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+  }
+  .game-cards {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--color-white);
+  }
+  .game-cards hr {
+    width: 25%;
+    height: 4px;
+    border-radius: 4px;
+  }
+  .game-cards-player, .game-cards-dealer {
+    margin: 0;
+  }
+  .game-scores, .game-buttons {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .game-scores {
+    padding: 0;
+  }
+  .game-scores-num {
+    margin: -4px 16px 0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+  }
+  .game-scores-num h2 {
+    margin: 6px 0 0 0;
+  }
+ .game-scores-dealer {
+    flex-direction: row-reverse;
+  }
 }
