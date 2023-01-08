@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  Play Catjack here: [https://catjack.netlify.app/](https://catjack.netlify.app/ "Catjack")
+  Play Catjack here: https://catjack.netlify.app/
 </p>
 
 <div align="center">
