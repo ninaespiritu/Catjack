@@ -1,4 +1,5 @@
 import "../styles/Card.css";
+import { motion } from "framer-motion";
 
 const Card = ({ card, colorCard }) => {
 	// Value of colorCard is set as backgroundImage
@@ -7,9 +8,9 @@ const Card = ({ card, colorCard }) => {
 	};
 
 	return (
-		<div className="card" style={colorCardStyle}>
+		<motion.div layout className="card" style={colorCardStyle}>
 			<h2>{card}</h2>
-		</div>
+		</motion.div>
 	);
 };
 
