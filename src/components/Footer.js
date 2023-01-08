@@ -1,6 +1,7 @@
 import "../styles/Footer.css";
 import { BsGithub } from "react-icons/bs";
 import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = ({
 	musicToggle,
@@ -11,11 +12,39 @@ const Footer = ({
 	cardPink,
 	cardPurple,
 }) => {
+	const container = {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delay: 1,
+				staggerChildren: 0.15,
+				delayChildren: 1,
+			},
+		},
+	};
+
+	const item = {
+		hidden: {
+			opacity: 0,
+			y: -25,
+		},
+		show: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.5,
+				ease: "easeOut",
+			},
+		},
+	};
 
 	return (
-		<footer>
+		<motion.footer variants={container} initial="hidden" animate="show">
 			<div className="footer-menu">
-				<div className="footer-group">
+				<motion.div className="footer-group" variants={item}>
 					<div className="footer-icon">
 						<button
 							className="button-color card-green"
@@ -38,19 +67,20 @@ const Footer = ({
 							? "pink"
 							: "purple"}
 					</p>
-				</div>
+				</motion.div>
 
-				<div
+				<motion.div
 					className="footer-group music"
 					onClick={() => musicToggle()}
+					variants={item}
 				>
 					<div className="footer-icon react">
 						{musicPlaying ? <FaPlayCircle /> : <FaPauseCircle />}
 					</div>
 					<p>music: {musicPlaying ? "on" : "off"}</p>
-				</div>
+				</motion.div>
 
-				<div className="footer-group">
+				<motion.div className="footer-group" variants={item}>
 					<div className="footer-icon react">
 						<BsGithub />
 					</div>
@@ -61,9 +91,9 @@ const Footer = ({
 					>
 						<p>github</p>
 					</a>
-				</div>
+				</motion.div>
 			</div>
-		</footer>
+		</motion.footer>
 	);
 };
 
