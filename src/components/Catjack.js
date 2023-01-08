@@ -9,6 +9,7 @@ import scoreGreen from "../assets/scoreGreen.png";
 import scorePink from "../assets/scorePink.png";
 import scorePurple from "../assets/scorePurple.png";
 import { FaBars } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Catjack = ({
 	setPlaying,
@@ -38,9 +39,38 @@ const Catjack = ({
 	musicToggle,
 	musicPlaying,
 	menuVisible,
-	setMenuVisible,
 	toggleMenu,
 }) => {
+	const container = {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.05,
+				delayChildren: 0.1,
+			},
+		},
+	};
+
+	const item = {
+		hidden: {
+			opacity: 0,
+			scale: 0.75,
+		},
+		show: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				duration: 0.75,
+				ease: "easeOut",
+				type: "spring",
+				bounce: 0.25,
+			},
+		},
+	};
+
 	const colorScoreStyle = [
 		{
 			backgroundImage: `url(${scoreGreen})`,
@@ -54,7 +84,12 @@ const Catjack = ({
 	];
 
 	return (
-		<div className="catjack">
+		<motion.div
+			className="catjack"
+			variants={container}
+			initial="hidden"
+			animate="show"
+		>
 			<header>
 				<div className="footer-display-catjack">
 					<div className="modal-toggle" onClick={toggleMenu}>
@@ -101,9 +136,11 @@ const Catjack = ({
 				<div className="game">
 					<div className="game-over-container">
 						<div className="game-over">
-							<h1>Game Over</h1>
-							<h3>You have no more cat lives...</h3>
-							<button
+							<motion.h1 variants={item}>Game Over</motion.h1>
+							<motion.h3 variants={item}>
+								You have no more cat lives...
+							</motion.h3>
+							<motion.button
 								className="button button-big"
 								onClick={() => {
 									setPlaying(false);
@@ -111,15 +148,16 @@ const Catjack = ({
 									setCatLives(9);
 									buttonPlayAgain();
 								}}
+								variants={item}
 							>
 								<div>Back to Home</div>
-							</button>
+							</motion.button>
 						</div>
 					</div>
 				</div>
 			) : (
 				<div className="game">
-					<div className="game-scores">
+					<motion.div className="game-scores" variants={item}>
 						<div className="game-scores-dealer">
 							<h3>dealer</h3>
 							<div className="game-scores-num">
@@ -144,10 +182,13 @@ const Catjack = ({
 								<h2>{playerScore}</h2>
 							</div>
 						</div>
-					</div>
+					</motion.div>
 
 					<div className="game-cards">
-						<div className="game-cards-dealer">
+						<motion.div
+							className="game-cards-dealer"
+							variants={item}
+						>
 							{turnOver ? (
 								<div style={{ display: "flex" }}>
 									{dealerCards.map((card, i) => (
@@ -167,14 +208,17 @@ const Catjack = ({
 									<Card colorCard={colorCardHide} />
 								</div>
 							)}
-						</div>
+						</motion.div>
 
 						{result === "" ? (
 							<div className="game-cards-results">
 								<hr />
 							</div>
 						) : (
-							<div className="game-cards-results">
+							<motion.div
+								className="game-cards-results"
+								variants={item}
+							>
 								<h3>{result}</h3>
 								<h1>
 									{result === "Player has Catjack." ||
@@ -190,10 +234,13 @@ const Catjack = ({
 										? "Tie!"
 										: ""}
 								</h1>
-							</div>
+							</motion.div>
 						)}
 
-						<div className="game-cards-player">
+						<motion.div
+							className="game-cards-player"
+							variants={item}
+						>
 							<div style={{ display: "flex" }}>
 								{playerCards.map((card, i) => (
 									<Card
@@ -203,11 +250,11 @@ const Catjack = ({
 									/>
 								))}
 							</div>
-						</div>
+						</motion.div>
 					</div>
 
 					{result === "" ? (
-						<div className="game-buttons">
+						<motion.div className="game-buttons" variants={item}>
 							<button
 								className="button button-small"
 								disabled={turnOver}
@@ -229,7 +276,7 @@ const Catjack = ({
 							>
 								<div>Stand</div>
 							</button>
-						</div>
+						</motion.div>
 					) : (
 						<div className="game-buttons play-again">
 							<button
@@ -245,7 +292,7 @@ const Catjack = ({
 					)}
 				</div>
 			)}
-		</div>
+		</motion.div>
 	);
 };
 
