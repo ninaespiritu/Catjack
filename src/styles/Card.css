@@ -14,20 +14,21 @@
   background-size: contain;
 }
 
-/* @media screen and (max-width: 1400px) {
-  .card {
-    width: 7.2vw;
-    height: 10.8vw;
-  }
-} */
-
 @media screen and (max-width: 1200px) {
   .card {
-    /* width: 110px;
-    height: 160px; */
-    width: 100px;
-    height: 150px;
-    /* width: 70px;
-    height: 105px; */
+    /* width: 80px;
+    height: 120px; */
+    width: 12vh;
+    height: 18vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    margin: 0 1px;
+    /* width: 14vw;
+    height: 21vw; */
+    width: 64px;
+    height: 96px;
   }
 }

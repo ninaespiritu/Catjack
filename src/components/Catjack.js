@@ -72,20 +72,22 @@ const Catjack = ({
 
 			{gameOver ? (
 				<div className="game">
-					<div className="game-over">
-						<h1>Game Over</h1>
-						<h3>You have no more cat lives...</h3>
-						<button
-							className="button button-big"
-							onClick={() => {
-								setPlaying(false);
-								setGameOver(false);
-								setCatLives(9);
-								buttonPlayAgain();
-							}}
-						>
-							<div>Back to Home</div>
-						</button>
+					<div className="game-over-container">
+						<div className="game-over">
+							<h1>Game Over</h1>
+							<h3>You have no more cat lives...</h3>
+							<button
+								className="button button-big"
+								onClick={() => {
+									setPlaying(false);
+									setGameOver(false);
+									setCatLives(9);
+									buttonPlayAgain();
+								}}
+							>
+								<div>Back to Home</div>
+							</button>
+						</div>
 					</div>
 				</div>
 			) : (
@@ -141,7 +143,9 @@ const Catjack = ({
 						</div>
 
 						{result === "" ? (
-							<hr />
+							<div className="game-cards-results">
+								<hr />
+							</div>
 						) : (
 							<div className="game-cards-results">
 								<h3>{result}</h3>
