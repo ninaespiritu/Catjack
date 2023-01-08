@@ -11,8 +11,8 @@
   justify-content: space-between;
   align-items: flex-start;
   background-color: var(--color-beige);
-  background-color: rgba(255, 240, 202, 0.75);
-  backdrop-filter: blur(7.5px);
+  /* background-color: rgba(255, 240, 202, 0.75);
+  backdrop-filter: blur(7.5px); */
 }
 .modal-menu {
   width: 100%;
@@ -38,11 +38,11 @@
   align-items: center;
 }
 .modal-icon.react {
+  width: 28px;
+  height: 28px;
   color: var(--color-brown-dark);
   background-color: var(--color-white);
   border-radius: 100%;
-  width: 28px;
-  height: 28px;
 }
 .modal-button-color {
   margin: 0 0 0 4px;
@@ -61,5 +61,13 @@
 @media screen and (max-width: 480px) {
   .modal-container {
     height: 640px;
+  }
+  .modal-icon.react {
+    width: 24px;
+    height: 24px;
+  }
+  .modal-button-color {
+    width: 24px;
+    height: 24px;
   }
 }
