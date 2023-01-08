@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+<div align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/ninaespiritu/Catjack/main/public/logo192.png" width="100" />
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  Catjack: A Cat-Themed Blackjack Game
+</h1>
 
-## Available Scripts
+<p align="center">
+  Catjack is a spin on your traditional Blackjack game — score as close to 21 and beat the dealer's hand to keep winning, or you risk losing your 9 cat lives!
+</p>
 
-In the project directory, you can run:
+<p align="center">
+  This webpage is built using React.js. Players can change their card colours from the given selection. They can also toggle the background music on and off.
+</p>
 
-### `npm start`
+<p align="center">
+  Play Catjack here: [https://catjack.netlify.app/](https://catjack.netlify.app/ "Catjack")
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ninaespiritu/Catjack/main/src/assets/gifCatjack.gif" />
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br />
+<p align="center">
+  This website is fully responsive and compatible for mobile devices.
+</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ninaespiritu/Catjack/main/src/assets/gifResponsive.gif" />
+</div>
 
-### `npm test`
+## 🛠 Setting Up
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Install the dependencies
 
-### `npm run build`
+   ```sh
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Start the development server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```sh
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Building & Running for Production
 
-### `npm run eject`
+1. Generate a full static production build
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```sh
+   npm run build
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Preview the site as it will appear once deployed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```sh
+   npm run serve
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎨 Color Reference
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Color          | Hex                                                                |
+| -------------- | ------------------------------------------------------------------ |
+| White          | ![#F7F7DD](https://via.placeholder.com/10/F7F7DD?text=+) `#F7F7DD` |
+| Beige          | ![#FFF0CA](https://via.placeholder.com/10/FFF0CA?text=+) `#FFF0CA` |
+| Dark Beige     | ![#EED9A7](https://via.placeholder.com/10/EED9A7?text=+) `#EED9A7` |
+| Green          | ![#DFFAA0](https://via.placeholder.com/10/DFFAA0?text=+) `#DFFAA0` |
+| Pink           | ![#FFD2C6](https://via.placeholder.com/10/FFD2C6?text=+) `#FFD2C6` |
+| Purple         | ![#DDDAFF](https://via.placeholder.com/10/DDDAFF?text=+) `#DDDAFF` |
+| Orange         | ![#FFDD98](https://via.placeholder.com/10/FFDD98?text=+) `#FFDD98` |
+| Brown          | ![#946241](https://via.placeholder.com/10/946241?text=+) `#946241` |
+| Light Brown    | ![#BE8E6E](https://via.placeholder.com/10/BE8E6E?text=+) `#BE8E6E` |
+| Dark Brown     | ![#6D4931](https://via.placeholder.com/10/6D4931?text=+) `#6D4931` |
