@@ -17,3 +17,11 @@
   margin: 0 0 16px;
 }
 
+@media screen and (max-width: 1200px) {
+  .home {
+    height: 90vh;
+  }
+  .home-logo {
+    width: 250px;
+  }
+}

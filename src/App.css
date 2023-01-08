@@ -37,13 +37,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  color: var(--color-brown);
+}
+html {
+  background-color: var(--color-beige);
   background-image: url(./assets/backgroundCats.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
-  background-color: var(--color-beige);
-  color: var(--color-brown);
 }
 h1 {
   font-size: 48px;
@@ -122,7 +124,7 @@ button {
 @media screen and (max-width: 1200px) {
   .app {
     padding: 16px 32px 32px;
-    min-height: 100vh;
+    height: 100%;
   }
   h1 {
     margin: -4px 0 0;

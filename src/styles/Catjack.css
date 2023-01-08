@@ -154,7 +154,7 @@
   }
   .game-cards {
     margin: 0;
-    padding: 12px 0;
+    padding: 24px 0;
     height: auto;
   }
   .game-cards-results {
@@ -200,6 +200,9 @@
     padding: 28px 16px 16px;
     border-radius: 40px;
   }
+  /* .game-cards {
+    padding: 36px 0;
+  } */
   .game-cards-results {
     margin: 28px 0;
   }
