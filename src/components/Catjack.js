@@ -1,5 +1,6 @@
 import "../styles/Catjack.css";
 import Card from "./Card";
+import FooterModal from "./FooterModal";
 import logoCatjackSmall from "../assets/logoCatjackSmall.png";
 import lifeGreen from "../assets/lifeGreen.png";
 import lifePink from "../assets/lifePink.png";
@@ -7,10 +8,12 @@ import lifePurple from "../assets/lifePurple.png";
 import scoreGreen from "../assets/scoreGreen.png";
 import scorePink from "../assets/scorePink.png";
 import scorePurple from "../assets/scorePurple.png";
+import { FaBars } from "react-icons/fa";
 
 const Catjack = ({
 	setPlaying,
 	colorCard,
+	setColorCard,
 	colorCardDealer,
 	colorCardHide,
 	cardGreen,
@@ -32,6 +35,11 @@ const Catjack = ({
 	buttonHit,
 	buttonStand,
 	buttonPlayAgain,
+	musicToggle,
+	musicPlaying,
+	menuVisible,
+	setMenuVisible,
+	toggleMenu,
 }) => {
 	const colorScoreStyle = [
 		{
@@ -48,6 +56,25 @@ const Catjack = ({
 	return (
 		<div className="catjack">
 			<header>
+				<div className="footer-display-catjack">
+					<div className="modal-toggle" onClick={toggleMenu}>
+						<FaBars />
+						<p>menu</p>
+					</div>
+
+					<FooterModal
+						musicToggle={musicToggle}
+						musicPlaying={musicPlaying}
+						colorCard={colorCard}
+						setColorCard={setColorCard}
+						cardGreen={cardGreen}
+						cardPink={cardPink}
+						cardPurple={cardPurple}
+						menuVisible={menuVisible}
+						toggleMenu={toggleMenu}
+					/>
+				</div>
+
 				<div className="catjack-logo">
 					<img src={logoCatjackSmall} alt="" />
 				</div>

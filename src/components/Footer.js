@@ -1,7 +1,6 @@
 import "../styles/Footer.css";
 import { BsGithub } from "react-icons/bs";
 import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
-import { useState } from "react";
 
 const Footer = ({
 	musicToggle,
@@ -12,16 +11,10 @@ const Footer = ({
 	cardPink,
 	cardPurple,
 }) => {
-	const [open, setOpen] = useState(false);
-
-	// FUNCTION: Toggle open/close footer menu on smaller devices
-	const handleOpen = () => {
-		setOpen(!open);
-	};
 
 	return (
 		<footer>
-			<div className={open ? "footer-menu active" : "footer-menu"}>
+			<div className="footer-menu">
 				<div className="footer-group">
 					<div className="footer-icon">
 						<button
@@ -38,7 +31,7 @@ const Footer = ({
 						></button>
 					</div>
 					<p>
-						colour:{" "}
+						cards:{" "}
 						{colorCard === cardGreen
 							? "green"
 							: colorCard === cardPink
@@ -69,10 +62,6 @@ const Footer = ({
 						<p>github</p>
 					</a>
 				</div>
-			</div>
-
-			<div className="hamburger" onClick={handleOpen}>
-				<button>{open ? "Close Menu" : "Open Menu"}</button>
 			</div>
 		</footer>
 	);

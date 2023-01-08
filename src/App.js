@@ -33,11 +33,18 @@ const App = () => {
 	const [colorCard, setColorCard] = useState(cardGreen);
 	const colorCardDealer = cardDealer;
 	const colorCardHide = cardHide;
+	const [menuVisible, setMenuVisible] = useState(false);
+	// const [open, setOpen] = useState(false);
 
 	// VARIABLES: Music
 	const [musicAutoplay, setMusicAutoplay] = useState(false);
 	const [musicPlaying, setMusicPlaying] = useState(false);
 	const musicRef = useRef(new Audio(musicBackground));
+
+	// Toggle menu open/close
+	const toggleMenu = () => {
+		setMenuVisible(!menuVisible);
+	};
 
 	// Toggle music on/off
 	const musicToggle = () => {
@@ -210,6 +217,7 @@ const App = () => {
 				<Catjack
 					setPlaying={setPlaying}
 					colorCard={colorCard}
+					setColorCard={setColorCard}
 					colorCardDealer={colorCardDealer}
 					colorCardHide={colorCardHide}
 					cardGreen={cardGreen}
@@ -231,20 +239,40 @@ const App = () => {
 					buttonHit={buttonHit}
 					buttonStand={buttonStand}
 					buttonPlayAgain={buttonPlayAgain}
+					musicToggle={musicToggle}
+					musicPlaying={musicPlaying}
+					menuVisible={menuVisible}
+					setMenuVisible={setMenuVisible}
+					toggleMenu={toggleMenu}
 				/>
 			) : (
-				<Home setPlaying={setPlaying} musicPlay={musicPlay} />
+				<Home
+					setPlaying={setPlaying}
+					musicPlay={musicPlay}
+					musicToggle={musicToggle}
+					musicPlaying={musicPlaying}
+					colorCard={colorCard}
+					setColorCard={setColorCard}
+					cardGreen={cardGreen}
+					cardPink={cardPink}
+					cardPurple={cardPurple}
+					menuVisible={menuVisible}
+					setMenuVisible={setMenuVisible}
+					toggleMenu={toggleMenu}
+				/>
 			)}
 
-			<Footer
-				musicToggle={musicToggle}
-				musicPlaying={musicPlaying}
-				colorCard={colorCard}
-				setColorCard={setColorCard}
-				cardGreen={cardGreen}
-				cardPink={cardPink}
-				cardPurple={cardPurple}
-			/>
+			<div className="footer-display-app">
+				<Footer
+					musicToggle={musicToggle}
+					musicPlaying={musicPlaying}
+					colorCard={colorCard}
+					setColorCard={setColorCard}
+					cardGreen={cardGreen}
+					cardPink={cardPink}
+					cardPurple={cardPurple}
+				/>
+			</div>
 		</div>
 	);
 };

@@ -52,36 +52,3 @@ footer {
 .card-purple {
   background-color: var(--color-purple-dark);
 }
-.hamburger {
-  z-index: 10000;
-  display: none;
-  cursor: pointer;
-}
-
-/* MEDIA QUERIES */
-
-@media screen and (max-width: 1200px) {
-  .footer-menu {
-    padding: 20px;
-    z-index: 9999;
-    position: fixed;
-    top: -100%;
-    flex-direction: column;
-    border: 5px solid var(--color-beige-dark);
-    border-radius: 32px;
-    background-color: var(--color-beige);
-    transition: 0.5s;
-  }
-  .footer-menu.active {
-    top: 0;
-  }
-  .hamburger {
-    display: flex;
-  }
-}
-
-/* @media screen and (max-width: 600px) {
-  .nav-menu {
-    width: 100%;
-  }
-} */
